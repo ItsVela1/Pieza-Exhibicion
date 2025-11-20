@@ -1,4 +1,4 @@
 package icesi.PacMan.model;
 
-public class Points {
+public class Character {
 }
