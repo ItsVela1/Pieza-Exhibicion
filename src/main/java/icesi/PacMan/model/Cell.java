@@ -7,4 +7,9 @@ public class Cell {
     private CellType type;
     private Food food;
 
+    public Cell(int x, int y, CellType type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+    }
 }
