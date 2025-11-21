@@ -2,10 +2,9 @@ package icesi.PacMan.model;
 
 public class Ghost {
 
-<<<<<<< HEAD
     private String color;
     private String name;
-    protected GhostBehaviour behaviour;
+    protected GhostBehavior behavior;
     private int scatterTargetX;
     private int scatterTargetY;
     private  GhostState state;
@@ -15,9 +14,9 @@ public class Ghost {
 
     }
 
-    public void setBehaviour(GhostBehaviour behaviour){
-        this.behaviour = behaviour;
-=======
+    public void setBehaviour(GhostBehavior behavior){
+        this.behavior = behavior;
+
     protected String Name;
     protected String Color;
     protected int scatteraTargetX;
@@ -34,7 +33,6 @@ public class Ghost {
         this.behavior = behavior;
         State = state;
         this.graph = graph;
->>>>>>> af18c9f56d96d7170c39f572f417ebeeaf38e4a8
     }
 
     public void setBehavior(GhostBehavior behavior) {
