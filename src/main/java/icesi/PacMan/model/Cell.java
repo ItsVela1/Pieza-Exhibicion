@@ -12,4 +12,11 @@ public class Cell {
         this.y = y;
         this.type = type;
     }
+
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public CellType getType() { return type; }
+    public Food getFood() { return food; }
+    public void setFood(Food food) { this.food = food; }
+
 }
