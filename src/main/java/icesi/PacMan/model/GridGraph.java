@@ -1,29 +1,23 @@
 package icesi.PacMan.model;
 
-<<<<<<< HEAD
-import javafx.scene.control.ListCell;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class GridGraph {
 
     private List<Cell> nodes;
 
 
-    public Cell getCell(x, y){
-
+    public Cell getCell(int x, int y){
+        // Implementación para obtener celda por coordenadas
+        return null;
     }
 
-    public List<Cell> neighbours(Cell cell){
+
+    public List<Cell> getNeighbours(Cell cell){
+
         List<Cell> neighbours = new ArrayList<>();
+        // Implementación para obtener vecinos
+        return neighbours;
     }
-
-
-=======
-<<<<<<<< HEAD:src/main/java/icesi/PacMan/model/Character.java
-public class Character {
-========
-public class GridGraph {
->>>>>>>> af18c9f56d96d7170c39f572f417ebeeaf38e4a8:src/main/java/icesi/PacMan/model/GridGraph.java
->>>>>>> af18c9f56d96d7170c39f572f417ebeeaf38e4a8
 }
