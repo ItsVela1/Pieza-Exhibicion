@@ -5,7 +5,6 @@ public class Cell {
     private int x;
     private int y;
     private CellType type;
-    private Food food;
 
     public Cell(int x, int y, CellType type) {
         this.x = x;
@@ -13,10 +12,27 @@ public class Cell {
         this.type = type;
     }
 
-    public int getX() { return x; }
-    public int getY() { return y; }
-    public CellType getType() { return type; }
-    public Food getFood() { return food; }
-    public void setFood(Food food) { this.food = food; }
+    public int getX() {
+        return x;
+    }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public CellType getType() {
+        return type;
+    }
+
+    public void setType(CellType type) {
+        this.type = type;
+    }
 }

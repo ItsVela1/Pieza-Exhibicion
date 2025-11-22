@@ -8,9 +8,10 @@ public class GameController {
         this.gameModel = new GameModel();
     }
 
-        // Métodos para controlar el juego
-        public void startGame() {}
-        public void pauseGame() {}
-        public void restartGame() {}
-    }
+    // Métodos para controlar el juego
+    public void startGame() {}
+    public void pauseGame() {}
+    public void restartGame() {}
+}
+
 

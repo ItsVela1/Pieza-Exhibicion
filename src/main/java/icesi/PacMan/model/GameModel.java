@@ -37,11 +37,11 @@ public class GameModel {
         if (gameOver) return;
 
         //Movimiento PacMan
-        pacman.move(grid);
+        pacman.move;
 
         //Movimiento Fantasmas
         for (Ghost ghost : ghosts) {
-            ghost.move();
+            ghost.
         }
 
         //Colisiones
