@@ -27,7 +27,7 @@ public class GridGraph {
                 }
 
                 // Paredes internas
-                else if ((x == 7 && y > 2 && y < 12 || ) || (y == 7 && x > 2 &&x < 12)){
+                else if ((x == 7 && y > 2 && y < 12) || (y == 7 && x > 2 && x < 12)) {
                     type = CellType.WALL;
                 }
 
