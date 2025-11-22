@@ -12,26 +12,20 @@ public class PacMan {
         this.score = 0;
         this.x = 1; // Posición inicial
         this.y = 1; // Posición inicial
-        this.direction = Direction.RIGHT;
+        this.direction = Direction.D;
     }
 
     public void move() {
-        // Lógica de movimiento de Pac-Man
+        int speed = 3; // <<< velocidad en píxeles
+
         switch (direction) {
-            case UP:
-                if (canMove(x, y - 1)) y--;
-                break;
-            case DOWN:
-                if (canMove(x, y + 1)) y++;
-                break;
-            case LEFT:
-                if (canMove(x - 1, y)) x--;
-                break;
-            case RIGHT:
-                if (canMove(x + 1, y)) x++;
-                break;
+            case W -> y -= speed;
+            case S -> y += speed;
+            case A -> x -= speed;
+            case D -> x += speed;
         }
     }
+
 
     private boolean canMove(int newX, int newY) {
         return newX >= 0 && newX < 15 && newY >= 0 && newY < 15;

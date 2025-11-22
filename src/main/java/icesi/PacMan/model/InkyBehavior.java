@@ -21,10 +21,10 @@ public class InkyBehavior implements GhostBehavior {
         int aheadY = pacY;
 
         switch (pacman.getDirection()) {
-            case UP: aheadY -= 2; break;
-            case DOWN: aheadY += 2; break;
-            case LEFT: aheadX -= 2; break;
-            case RIGHT: aheadX += 2; break;
+            case W: aheadY -= 2; break;
+            case S: aheadY += 2; break;
+            case A: aheadX -= 2; break;
+            case D: aheadX += 2; break;
         }
 
         // Encontrar a Blinky (asumiendo que está en la lista de fantasmas)

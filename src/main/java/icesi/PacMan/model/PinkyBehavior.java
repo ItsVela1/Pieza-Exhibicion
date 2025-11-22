@@ -17,10 +17,10 @@ public class PinkyBehavior implements GhostBehavior {
         int targetY = pacman.getY();  // Cambiado de pacMan a pacman
 
         switch (pacman.getDirection()) {
-            case UP: targetY -= 4; break;
-            case DOWN: targetY += 4; break;
-            case LEFT: targetX -= 4; break;
-            case RIGHT: targetX += 4; break;
+            case W: targetY -= 4; break;
+            case S: targetY += 4; break;
+            case A: targetX -= 4; break;
+            case D: targetX += 4; break;
         }
 
         return new int[]{targetX, targetY};
