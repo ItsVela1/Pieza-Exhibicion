@@ -13,6 +13,6 @@ public class YouLose {
 
     @FXML
     private void handleRestart() {
-        // Lógica para reiniciar el juego
+        System.out.println("Reiniciando...");
     }
 }

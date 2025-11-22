@@ -3,12 +3,11 @@ package icesi.PacMan.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.awt.event.ActionEvent;
 
 public class MainMenu {
 
     @FXML
-    private Button startGameButton;
+    private Button startButton;
 
     @FXML
     private Button pauseGameButton;
@@ -20,7 +19,8 @@ public class MainMenu {
     private Button exitGameButton;
 
     @FXML
-    private void handleStartGameButtonAction() {// Lógica para iniciar el juego
+    private void handleStartGameButtonAction() {
+        System.out.println("El juego esta iniciando....");
     }
 }
 

@@ -1,11 +1,13 @@
 package icesi.PacMan.model;
 
-public class Blinky extends Ghost{
+public class Blinky extends Ghost {
+    private int aggression;
 
-private  int agression;
-
-    public Blinky(String name, String color, int scatteraTargetX, int scatteraTargetY, GhostBehavior behavior, GhostState state, GridGraph graph, int agression) {
-        super(name, color, scatteraTargetX, scatteraTargetY, behavior, state, graph);
-        this.agression = agression;
+    public Blinky(String name, String color, int scatterTargetX, int scatterTargetY,
+                  GhostBehavior behavior, GhostState state, GridGraph graph, int aggression) {
+        super(name, color, scatterTargetX, scatterTargetY, behavior, state, graph);
+        this.aggression = aggression;
     }
+
+    public int getAggression() { return aggression; }
 }
