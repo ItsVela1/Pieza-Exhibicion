@@ -1,9 +1,9 @@
 module icesi.PacMan {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.desktop;
 
-
-    opens icesi.PacMan to javafx.fxml;
+    opens icesi.PacMan.controller to javafx.fxml;
+    exports icesi.PacMan.controller;
     exports icesi.PacMan;
+    requires javafx.graphics;
 }
