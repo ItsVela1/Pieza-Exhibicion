@@ -1,50 +1,104 @@
 package icesi.PacMan.model;
 
-import icesi.PacMan.Structures.ListGraph;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameModel {
-    private ListGraph<Cell> Logicgraph;
-    private PacMan pacMan;
-    private GridGraph grid;
-    private Ghost ghost;
-    private int gridHeight;
-    private int gridWidth;
 
-    public GameModel(ListGraph<Cell> Logicgraph, PacMan pacMan, GridGraph grid,Ghost ghost, int gridHeight, int gridWidth) {
-        this.Logicgraph= new ListGraph<>();
-        this.pacMan = pacMan;
-        this.grid = new GridGraph(gridWidth, gridHeight);
-        this.ghost = ghost;
-        this.gridHeight = gridHeight;
-        this.gridWidth = gridWidth;
-       BuldGameGraph();
+    private GridGraph grid;
+    private PacMan pacman;
+    private List<Ghost> ghosts;
+    private int score;
+    private boolean gameOver;
+
+    public GameModel() {
+        this.grid = new GridGraph();
+        this.pacman = new PacMan(3);
+        this.ghosts = new ArrayList<>();
+        this.score = 0;
+        this.gameOver = false;
+        initializeGhosts();
+        initializeGrid();
     }
-     private void BuldGameGraph(){
-        for(int y=0;y<gridHeight;y++){
-            for(int x=0;x<gridWidth;x++){
-                Cell c=grid.getCell(x,y);
-                if (c.getType() != CellType.WALL){
-                    Logicgraph.addVertex(c);
+
+    private void initializeGrid() {}
+
+    private void initializeGhosts() {
+        // Inicializar los fantasmas aquí
+        ghosts.add(new Blinky("Blinky", "Red", 25, 0, null, GhostState.CHASE, grid, 5));
+        ghosts.add(new Pinky("Pinky", "Pink", 2, 0, null, GhostState.CHASE, grid, 4));
+        ghosts.add(new Inky("Inky", "Cyan", 27, 35, null, GhostState.CHASE, grid, 0.5));
+        ghosts.add(new Clyde("Clyde", "Orange", 0, 35, null, GhostState.CHASE, grid, 8));
+    }
+
+
+    public void update() {
+
+        if (gameOver) return;
+
+        //Movimiento PacMan
+        pacman.move;
+
+        //Movimiento Fantasmas
+        for (Ghost ghost : ghosts) {
+            ghost.
+        }
+
+        //Colisiones
+        checkCollisions();
+    }
+
+    private void checkCollisions() {
+        // Verificar si PacMan como pellets
+
+        Cell currentCell = grid.getCell(pacman.getX(), pacman.getY());
+        if (currentCell != null && currentCell.getFood() != null) {
+            if (currentCell.getFood() == Food.PELLET) {
+                pacman.eatPellet();
+                score += 10;
+                currentCell.setFood(null);
+            } else if (currentCell.getFood() == Food.POWER_PELLET) {
+                pacman.eatPowerPellet();
+                score += 50;
+                currentCell.setFood(null);
+
+                for (Ghost ghost : ghosts) {
+                    ghost.setState(GhostState.FRIGHTENED);
                 }
             }
         }
-        for(int y=0;y<gridHeight;y++){
-            for(int x=0;x<gridWidth;x++){
-                Cell c=grid.getCell(x,y);
-                if (c.getType() != CellType.WALL)continue;
-                List<Cell> vecinos=grid.neighbors(c);
-                for (Cell n:vecinos){
-                    if (n.getType() != CellType.WALL){
-                        Logicgraph.addEdge(c,n,1);
+
+        // Verificar colisiones con fantasmas
+
+        for (Ghost ghost : ghosts) {
+            if (pacman.getX() == ghost.getX() && pacman.getY() == ghost.getY()) {
+                if (ghost.getState() == GhostState.FRIGHTENED) {
+                    // PacMan come el fantasma
+                    ghost.setState(GhostState.CHASE); // Volver a estado normal después de un tiempo?
+                    score += 200;
+                } else {
+                    // PacMan pierde una vida
+                    pacman.setLives(pacman.getLives() - 1);
+                    if (pacman.getLives() <= 0) {
+                        gameOver = true;
+                    } else {
+                        // Reiniciar posiciones
+                        resetPositions();
                     }
                 }
             }
         }
-        System.out.println("Vertices creados"+Logicgraph.vertexCount());
-        System.out.println("Aristas  creados"+Logicgraph.edgeCount());
-     }
+    }
 
+    private void resetPositions() {
+        pacman.setX(14);
+        pacman.setY(23);
+    }
+
+    public GridGraph getGrid() { return grid; }
+    public PacMan getPacMan() { return pacman; }
+    public List<Ghost> getGhosts() { return ghosts; }
+    public int getScore() { return score; }
+    public boolean isGameOver() { return gameOver; }
 
 }

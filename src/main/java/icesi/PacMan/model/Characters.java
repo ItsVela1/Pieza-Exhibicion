@@ -1,13 +1,21 @@
 package icesi.PacMan.model;
 
 public class Characters {
-    private Directions direction;
+    private Direction direction;
     private int x;
     private int y;
 
-    public Characters(Directions direction, int x, int y) {
+    public Characters(Direction direction, int x, int y) {
         this.direction = direction;
         this.x = x;
         this.y = y;
     }
+
+    public Direction getDirection() { return direction; }
+    public void setDirection(Direction direction) { this.direction = direction; }
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
+    public int getY() { return y; }
+    public void setY(int y) { this.y = y; }
+
 }

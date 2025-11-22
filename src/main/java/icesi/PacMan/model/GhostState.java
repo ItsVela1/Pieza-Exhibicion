@@ -1,5 +1,9 @@
 package icesi.PacMan.model;
 
 public enum GhostState {
-    CHASE,SCATTER,FRIGHTENED
+
+    CHASE,
+    SCATTER,
+    FRIGHTENED
+
 }

@@ -4,65 +4,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GridGraph {
-
+    private List<Cell> nodes;
     private int width;
     private int height;
-    private Cell[][] grid;
 
-    public GridGraph(int width, int height) {
-        this.width = width;
-        this.height = height;
-        this.grid = new Cell[height][width];
+    public GridGraph() {
+        this.nodes = new ArrayList<>();
+        this.width = 28; // Típico ancho de Pac-Man
+        this.height = 31; // Típico alto de Pac-Man
+        initializeGrid();
+    }
 
+    private void initializeGrid() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                grid[y][x] = new Cell(x, y, CellType.BlANK);
+                CellType type = (x == 0 || x == width - 1 || y == 0 || y == height - 1)
+                        ? CellType.WALL : CellType.BLANK;
+                nodes.add(new Cell(x, y, type));
             }
         }
     }
+
     public Cell getCell(int x, int y) {
-        if (x < 0 || x >= width || y < 0 || y >= height)
-            return null;
-
-        return grid[y][x];
+        for (Cell cell : nodes) {
+            if (cell.getX() == x && cell.getY() == y) {
+                return cell;
+            }
+        }
+        return null;
     }
 
+    public List<Cell> getNeighbours(Cell cell) {
+        List<Cell> neighbours = new ArrayList<>();
+        int x = cell.getX();
+        int y = cell.getY();
 
-    public void setCell(int x, int y, CellType type) {
-        if (x < 0 || x >= width || y < 0 || y >= height)
-            return;
-        grid[y][x].setType(type);
+        addIfValid(neighbours, x, y - 1); // Arriba
+        addIfValid(neighbours, x, y + 1); // Abajo
+        addIfValid(neighbours, x - 1, y); // Izquierda
+        addIfValid(neighbours, x + 1, y); // Derecha
+
+        return neighbours;
     }
 
-
-    public List<Cell> neighbors(int x, int y) {
-
-        List<Cell> list = new ArrayList<>();
-        if (y > 0)
-            list.add(grid[y - 1][x]);
-
-
-        if (y < height - 1)
-            list.add(grid[y + 1][x]);
-
-
-        if (x > 0)
-            list.add(grid[y][x - 1]);
-
-        if (x < width - 1)
-            list.add(grid[y][x + 1]);
-
-        return list;
+    private void addIfValid(List<Cell> neighbours, int x, int y) {
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+            Cell cell = getCell(x, y);
+            if (cell != null && cell.getType() != CellType.WALL) {
+                neighbours.add(cell);
+            }
+        }
     }
 
-    public List<Cell> neighbors(Cell c) {
-        return neighbors(c.getX(), c.getY());
+    public void addCell(Cell cell) {
+        nodes.add(cell);
     }
-
 
     public int getWidth() { return width; }
-
     public int getHeight() { return height; }
-
-    public Cell[][] getGrid() { return grid; }
 }
