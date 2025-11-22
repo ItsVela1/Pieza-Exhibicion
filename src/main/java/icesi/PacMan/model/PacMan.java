@@ -46,4 +46,6 @@ public class PacMan {
     public void setDirection(Direction direction) { this.direction = direction; }
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
+
+
 }
