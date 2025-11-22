@@ -10,17 +10,29 @@ public class GridGraph {
 
     public GridGraph() {
         this.nodes = new ArrayList<>();
-        this.width = 28; // Típico ancho de Pac-Man
-        this.height = 31; // Típico alto de Pac-Man
-        initializeGrid();
+        this.width = 15;
+        this.height = 15;
     }
 
-    private void initializeGrid() {
+    public void initializeSimpleGrid() {
+        nodes.clear();
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                CellType type = (x == 0 || x == width - 1 || y == 0 || y == height - 1)
-                        ? CellType.WALL : CellType.BLANK;
-                nodes.add(new Cell(x, y, type));
+                CellType type = CellType.BLANK;
+
+                // Bordes con pared
+                if (x == 0 || x == width - 1 || y == 0 || y == height - 1) {
+                    type = CellType.WALL;
+                }
+
+                // Paredes internas
+                else if ((x == 7 && y > 2 && y < 12 || ) || (y == 7 && x > 2 &&x < 12)){
+                    type = CellType.WALL;
+                }
+
+                Cell cell = new Cell(x, y, type);
+                nodes.add(cell);
             }
         }
     }
@@ -39,25 +51,22 @@ public class GridGraph {
         int x = cell.getX();
         int y = cell.getY();
 
-        addIfValid(neighbours, x, y - 1); // Arriba
-        addIfValid(neighbours, x, y + 1); // Abajo
-        addIfValid(neighbours, x - 1, y); // Izquierda
-        addIfValid(neighbours, x + 1, y); // Derecha
+        // Solo movimientos horizontales y verticales
+        checkAndAddNeighbour(neighbours, x, y - 1); // Arriba
+        checkAndAddNeighbour(neighbours, x, y + 1); // Abajo
+        checkAndAddNeighbour(neighbours, x - 1, y); // Izquierda
+        checkAndAddNeighbour(neighbours, x + 1, y); // Derecha
 
         return neighbours;
     }
 
-    private void addIfValid(List<Cell> neighbours, int x, int y) {
+    private void checkAndAddNeighbour(List<Cell> neighbours, int x, int y) {
         if (x >= 0 && x < width && y >= 0 && y < height) {
             Cell cell = getCell(x, y);
             if (cell != null && cell.getType() != CellType.WALL) {
                 neighbours.add(cell);
             }
         }
-    }
-
-    public void addCell(Cell cell) {
-        nodes.add(cell);
     }
 
     public int getWidth() { return width; }
