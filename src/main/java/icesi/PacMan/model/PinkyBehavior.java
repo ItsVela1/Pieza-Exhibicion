@@ -11,12 +11,12 @@ public class PinkyBehavior implements GhostBehavior {
     }
 
     @Override
-    public int[] getTarget(Ghost ghost, PacMan pacMan, GridGraph grid) {
+    public int[] getTarget(Ghost ghost, PacMan pacman, GridGraph grid) {
         // Pinky apunta 4 casillas adelante de Pac-Man
-        int targetX = pacMan.getX();
-        int targetY = pacMan.getY();
+        int targetX = pacman.getX();  // Cambiado de pacMan a pacman
+        int targetY = pacman.getY();  // Cambiado de pacMan a pacman
 
-        switch (pacMan.getDirection()) {
+        switch (pacman.getDirection()) {
             case UP: targetY -= 4; break;
             case DOWN: targetY += 4; break;
             case LEFT: targetX -= 4; break;

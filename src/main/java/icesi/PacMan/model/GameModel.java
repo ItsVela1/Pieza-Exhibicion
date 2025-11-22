@@ -34,19 +34,19 @@ public class GameModel {
         pinky.setX(12); pinky.setY(11);
         inky.setX(14); inky.setY(11);
         clyde.setX(13); clyde.setY(12);
+
+        // Inky necesita referencia de los demás fantasmas
+        List<Ghost> otherGhosts = new ArrayList<>();
+        otherGhosts.add(blinky);  // Cambiado de 'Blinky' a 'blinky'
+        otherGhosts.add(pinky);
+        otherGhosts.add(clyde);
+        ((Inky)inky).setOtherGhosts(otherGhosts);
+
+        ghosts.add(blinky);
+        ghosts.add(pinky);
+        ghosts.add(inky);
+        ghosts.add(clyde);
     }
-
-    // Inky necesita referencia de los demás fantasmas
-    List<Ghost> otherGhosts = new ArrayList<>();
-    otherGhosts.add(blinky);
-    otherGhosts.add(pinky);
-    otherGhosts.add(clyde);
-    ((Inky)inky).setOtherGhosts(otherGhosts);
-
-    ghosts.add(blinky);
-    ghosts.add(pinky);
-    ghosts.add(inky);
-    ghosts.add(clyde);
 
     public void update(){
         if (!gameRunning) return;
